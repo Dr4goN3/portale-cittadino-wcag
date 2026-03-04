@@ -1,59 +1,124 @@
-# PortaleCittadinoWcag
+# Portale Cittadino WCAG
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.9.
+Prototipo di interfaccia web accessibile sviluppato come caso di studio per la tesi:  
+**"Progettazione e sviluppo di un'interfaccia web accessibile secondo le linee guida WCAG 2.2: principi, tecniche e verifica dell'usabilità"**
 
-## Development server
+## Contesto
 
-To start a local development server, run:
+Il progetto simula uno **Sportello Demografico** comunale e riproduce un flusso realistico di interazione:
 
-```bash
-ng serve
-```
+1. **Home** — lista di servizi disponibili con stato di disponibilità
+2. **Dettaglio servizio** — scheda informativa con costi, tempi e documenti necessari
+3. **Contatto** — form reattivo con validazione accessibile, error summary e messaggio di conferma
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+L'accessibilità è stata integrata fin dalla progettazione (*accessibility-by-design*), con conformità target **WCAG 2.2 Level AA**. Le principali tecniche adottate:
 
-## Code scaffolding
+- Semantica HTML nativa e uso limitato di ARIA
+- Skip link, focus visibile e ordine di navigazione da tastiera
+- Error summary con focus programmato in caso di errori di validazione
+- Messaggi di stato annunciati via `role="status"` / `aria-live="polite"` senza spostamento del focus
+- Contrasto rispettoso dei criteri 1.4.3 e 1.4.11
+- Reflow a 320 px (WCAG 1.4.10)
+- Internazionalizzazione italiano/inglese con ngx-translate
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Stack tecnico
 
-```bash
-ng generate component component-name
-```
+| | |
+|---|---|
+| Framework | Angular 20.3.0 (standalone components, lazy routing) |
+| Stili | SCSS con design token (variabili, mixin, tipografia) |
+| i18n | ngx-translate v17 |
+| Node | ≥ 18 |
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Prerequisiti
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- **Node.js** ≥ 18 — [nodejs.org](https://nodejs.org)
+- **npm** ≥ 9 (incluso con Node)
+- **Angular CLI** (opzionale, ma consigliato)
 
 ```bash
-ng test
+npm install -g @angular/cli
 ```
 
-## Running end-to-end tests
+### Verifica Node e npm
 
-For end-to-end (e2e) testing, run:
+Controlla se Node è già installato:
 
 ```bash
-ng e2e
+node -v
+npm -v
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Gestione versioni con nvm (consigliato)
 
-## Additional Resources
+[nvm](https://github.com/nvm-sh/nvm) permette di installare e passare tra versioni di Node senza conflitti.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Installazione nvm** (macOS / Linux):
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+```
+
+Riapri il terminale, poi:
+
+```bash
+# Verifica che nvm sia attivo
+nvm --version
+
+# Installa Node 20 LTS
+nvm install 20
+
+# Usalo nel progetto
+nvm use 20
+
+# Imposta come default
+nvm alias default 20
+```
+
+**Windows:** usa [nvm-windows](https://github.com/coreybutler/nvm-windows) — scarica l'installer dalla pagina Releases.
+
+> Se non vuoi usare nvm, puoi scaricare l'installer direttamente da [nodejs.org](https://nodejs.org) (scegli la versione LTS).
+
+## Avvio in sviluppo
+
+```bash
+# 1. Installa le dipendenze
+npm install
+
+# 2. Avvia il server di sviluppo
+npm start
+```
+
+L'applicazione sarà disponibile su `http://localhost:4200/`.  
+Il server si ricarica automaticamente ad ogni modifica ai sorgenti.
+
+## Build di produzione
+
+```bash
+npm run build
+```
+
+Gli artefatti vengono generati nella cartella `dist/portale-cittadino-wcag/`.
+
+## Test unitari
+
+```bash
+npm test
+```
+
+## Struttura del progetto
+
+```
+src/
+├── app/
+│   ├── core/               # Header, Footer, SkipLink
+│   ├── features/
+│   │   ├── home/           # Pagina lista servizi
+│   │   ├── service-detail/ # Pagina dettaglio servizio
+│   │   └── contact/        # Form di contatto
+│   └── shared/
+│       ├── components/     # Breadcrumb, StatusMessage
+│       └── validators/     # Validatori custom (telefono, whitespace)
+├── styles/                 # _variables.scss, _mixins.scss, _typography.scss
+└── public/assets/i18n/     # en.json, it.json
+```
