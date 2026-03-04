@@ -249,6 +249,7 @@ svg {
     &:hover:not(:disabled) {
       background: v.$color-primary-dark;
       border-color: v.$color-primary-dark;
+      color: v.$color-text-inverse;
     }
   }
 
