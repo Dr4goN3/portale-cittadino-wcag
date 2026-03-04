@@ -1,0 +1,46 @@
+<!--
+  WCAG 1.3.1  — <header> landmark identifies the site header region
+  WCAG 2.4.6  — Site name visible as text link (not image-only)
+  WCAG 2.4.3  — Navigation links in logical reading/focus order
+  WCAG 1.4.1  — Active page indicated by class AND aria-current, not colour alone
+-->
+<header class="site-header" role="banner">
+  <div class="container site-header__inner">
+
+    <!-- Site identity -->
+    <a routerLink="/" class="site-header__brand" [attr.aria-label]="'header.brand' | translate">
+      <!-- Decorative building icon; aria-hidden because label is on the <a> -->
+      <svg class="site-header__icon" aria-hidden="true" focusable="false"
+           width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M3 21h18v-2H3v2zm2-4h14v-2H5v2zm0-4h14v-2H5v2zm0-4h14V7H5v2zm7-8L3 7h18L12 1z"/>
+      </svg>
+      <span class="site-header__name">{{ 'header.brandName' | translate }}</span>
+    </a>
+
+    <!--
+      Primary navigation
+      aria-label differentiates this <nav> from others on the page (WCAG 1.3.1)
+    -->
+    <nav class="site-header__nav" [attr.aria-label]="'header.nav.label' | translate">
+      <ul class="site-header__nav-list" role="list">
+        <li>
+          <a routerLink="/"
+             routerLinkActive="is-active"
+             [routerLinkActiveOptions]="{ exact: true }"
+             aria-current="page"
+             class="site-header__nav-link">
+            {{ 'header.nav.services' | translate }}
+          </a>
+        </li>
+        <li>
+          <a routerLink="/contact"
+             routerLinkActive="is-active"
+             class="site-header__nav-link">
+            {{ 'header.nav.contact' | translate }}
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+</header>

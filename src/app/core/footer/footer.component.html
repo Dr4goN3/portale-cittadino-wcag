@@ -1,0 +1,25 @@
+<!--
+  WCAG 1.3.1 — <footer> with role="contentinfo" identifies footer region
+  WCAG 2.4.4 — All links have descriptive visible text
+-->
+<footer class="site-footer" role="contentinfo">
+  <div class="container site-footer__inner">
+
+    <div class="site-footer__brand">
+      <p class="site-footer__name">{{ 'footer.brandName' | translate }}</p>
+      <p class="site-footer__tagline">{{ 'footer.tagline' | translate }}</p>
+    </div>
+
+    <nav class="site-footer__nav" [attr.aria-label]="'footer.nav.label' | translate">
+      <ul class="site-footer__nav-list" role="list">
+        <li><a routerLink="/" class="site-footer__link">{{ 'footer.nav.services' | translate }}</a></li>
+        <li><a routerLink="/contact" class="site-footer__link">{{ 'footer.nav.contact' | translate }}</a></li>
+      </ul>
+    </nav>
+
+    <p class="site-footer__copy">
+      &copy; {{ currentYear }} {{ 'footer.copy' | translate }}
+    </p>
+
+  </div>
+</footer>

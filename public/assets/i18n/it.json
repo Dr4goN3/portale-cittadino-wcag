@@ -1,0 +1,195 @@
+{
+  "meta": {
+    "description": "Portale digitale per i servizi demografici del Comune. Richiedi certificati e documenti online."
+  },
+  "skip": {
+    "mainContent": "Salta al contenuto principale"
+  },
+  "header": {
+    "brand": "Sportello Demografico - Pagina principale",
+    "brandName": "Sportello Demografico",
+    "nav": {
+      "label": "Navigazione principale",
+      "services": "Servizi",
+      "contact": "Contatti"
+    }
+  },
+  "footer": {
+    "brandName": "Sportello Demografico",
+    "tagline": "Comune — Portale digitale dei servizi al cittadino",
+    "nav": {
+      "label": "Navigazione a piè di pagina",
+      "services": "Servizi",
+      "contact": "Contatti"
+    },
+    "copy": "Comune. Prototipo sviluppato a scopo accademico."
+  },
+  "home": {
+    "title": "Servizi — Sportello Demografico",
+    "heading": "Servizi al cittadino",
+    "intro": "Benvenuto nel portale digitale dello <strong>Sportello Demografico</strong>. Consulta e richiedi documenti anagrafici ufficiali online.",
+    "list": {
+      "label": "Servizi al cittadino disponibili"
+    },
+    "badge": {
+      "available": "Servizio disponibile online",
+      "unavailable": "Servizio non disponibile online",
+      "onlineLabel": "Online",
+      "inPersonLabel": "Solo di persona"
+    },
+    "card": {
+      "viewDetails": "Scopri di più",
+      "viewDetailsAriaLabel": "Scopri di più: {{serviceName}}",
+      "appointmentRequired": "Appuntamento necessario"
+    }
+  },
+  "services": {
+    "residency-certificate": {
+      "iconLabel": "Casa",
+      "title": "Certificato di Residenza",
+      "description": "Richiedi un documento certificato che attesta il tuo indirizzo di residenza anagrafico. Richiesto per molte procedure amministrative.",
+      "detail": {
+        "description": "Il certificato di residenza è un documento ufficiale rilasciato dal Comune che attesta il tuo indirizzo di residenza. Viene comunemente richiesto da datori di lavoro, banche, tribunali e uffici pubblici.",
+        "processingTime": "1–3 giorni lavorativi",
+        "cost": "Gratuito per uso personale; €0,16 di imposta di bollo per uso legale.",
+        "howToApply": "Compila il modulo di contatto con i tuoi dati personali e il motivo della richiesta. Riceverai il documento come PDF certificato entro i tempi indicati.",
+        "docs": [
+          "Documento d'identità valido (carta d'identità o passaporto)",
+          "Codice fiscale",
+          "Modulo di richiesta online compilato"
+        ]
+      }
+    },
+    "family-status": {
+      "iconLabel": "Famiglia",
+      "title": "Certificato di Stato di Famiglia",
+      "description": "Ottieni un atto che certifica la composizione del tuo nucleo familiare. Necessario per iscrizioni scolastiche, procedimenti giudiziari e uffici pubblici.",
+      "detail": {
+        "description": "Il certificato di stato di famiglia documenta la composizione del nucleo familiare registrato nell'anagrafe comunale. È richiesto per le iscrizioni scolastiche, i procedimenti giudiziari e le domande agli enti pubblici.",
+        "processingTime": "2–4 giorni lavorativi",
+        "cost": "Gratuito per uso personale. €0,16 di imposta di bollo per uso amministrativo/legale.",
+        "howToApply": "Invia la tua richiesta tramite il modulo di contatto. Specifica nel campo 'Messaggio' l'uso previsto del documento per applicare la corretta esenzione dal bollo.",
+        "docs": [
+          "Documento d'identità valido del richiedente",
+          "Codice fiscale di tutti i componenti del nucleo familiare (se disponibile)",
+          "Modulo di richiesta online compilato"
+        ]
+      }
+    },
+    "identity-card": {
+      "iconLabel": "Carta d'identità",
+      "title": "Richiesta Carta d'Identità",
+      "description": "Richiedi una nuova carta d'identità italiana o rinnova quella esistente. È necessario un appuntamento presso l'ufficio locale.",
+      "detail": {
+        "description": "La carta d'identità elettronica (CIE) è il documento di riconoscimento ufficiale rilasciato dal Comune. Puoi richiederla per la prima volta o rinnovarla alla scadenza. Il servizio richiede un appuntamento allo sportello.",
+        "processingTime": "Rilascio immediato allo sportello durante l'appuntamento",
+        "cost": "€22,21 per il primo rilascio o rinnovo ordinario; €27,77 in caso di deterioramento o smarrimento.",
+        "howToApply": "Prenota un appuntamento telefonando all'ufficio anagrafe o tramite il portale CIEonline. Presentati allo sportello con i documenti richiesti.",
+        "docs": [
+          "Documento d'identità scaduto o deteriorato (se in rinnovo)",
+          "Una foto tessera recente su sfondo bianco",
+          "Codice fiscale",
+          "Ricevuta del pagamento dei diritti"
+        ]
+      }
+    }
+  },
+  "detail": {
+    "title": "{{serviceName}} — Sportello Demografico",
+    "badge": {
+      "available": "Servizio disponibile online",
+      "unavailable": "Servizio non disponibile online",
+      "onlineLabel": "Disponibile online",
+      "inPersonLabel": "Solo di persona"
+    },
+    "section": {
+      "description": "Descrizione",
+      "documents": "Documenti richiesti",
+      "times": "Tempi e costi",
+      "howToApply": "Come fare richiesta"
+    },
+    "dl": {
+      "processingTime": "Tempi di lavorazione",
+      "cost": "Costo"
+    },
+    "cta": {
+      "label": "Invia una richiesta",
+      "ariaLabel": "Invia una richiesta per: {{serviceName}}"
+    },
+    "notFound": {
+      "title": "Servizio non trovato",
+      "message": "Il servizio richiesto non esiste o non è più disponibile.",
+      "back": "Torna ai servizi"
+    }
+  },
+  "contact": {
+    "title": "Contatti — Sportello Demografico",
+    "heading": "Invia una richiesta",
+    "intro": "Compila il modulo sottostante per richiedere un documento o inviare una domanda. I campi contrassegnati con * sono obbligatori.",
+    "introRequired": "asterisco",
+    "form": {
+      "ariaLabel": "Modulo di richiesta servizi al cittadino",
+      "firstName": {
+        "label": "Nome",
+        "required": "(obbligatorio)"
+      },
+      "lastName": {
+        "label": "Cognome",
+        "required": "(obbligatorio)"
+      },
+      "email": {
+        "label": "Indirizzo email",
+        "hint": "Invieremo la conferma e il documento a questo indirizzo.",
+        "required": "(obbligatorio)"
+      },
+      "phone": {
+        "label": "Numero di telefono",
+        "optional": "(facoltativo)",
+        "hint": "Facoltativo. Formato italiano, es. +39 333 1234567 o 02 1234567."
+      },
+      "requestType": {
+        "label": "Tipo di richiesta",
+        "required": "(obbligatorio)",
+        "placeholder": "Seleziona un servizio…",
+        "options": {
+          "residency-certificate": "Certificato di Residenza",
+          "family-status": "Certificato di Stato di Famiglia",
+          "identity-card": "Carta d'Identità",
+          "other": "Altra richiesta"
+        }
+      },
+      "message": {
+        "label": "Messaggio",
+        "required": "(obbligatorio)",
+        "hint": "Descrivi la tua richiesta in dettaglio. Minimo 20 caratteri, massimo 1 000."
+      },
+      "privacy": {
+        "label": "Ho letto e accetto la",
+        "policyLink": "Informativa sulla privacy",
+        "labelSuffix": "e acconsento al trattamento dei miei dati personali.",
+        "required": "(obbligatorio)"
+      },
+      "submit": {
+        "label": "Invia richiesta",
+        "submitting": "Invio in corso…"
+      }
+    },
+    "errors": {
+      "count": "Ci sono {{count}} errore/i in questo modulo"
+    },
+    "success": {
+      "title": "Richiesta inviata con successo",
+      "message": "Grazie. Lavoreremo la tua richiesta e risponderemo entro i tempi indicati.",
+      "back": "Torna ai servizi"
+    }
+  },
+  "errors": {
+    "required": "{{field}} è obbligatorio.",
+    "minlength": "{{field}} deve contenere almeno {{requiredLength}} caratteri.",
+    "maxlength": "{{field}} non deve superare {{requiredLength}} caratteri.",
+    "email": "Inserisci un indirizzo email valido (es. nome@esempio.com).",
+    "invalidPhone": "Inserisci un numero di telefono italiano valido (es. +39 333 1234567 o 02 1234567).",
+    "whitespace": "{{field}} non può contenere solo spazi.",
+    "requiredTrue": "{{field}} deve essere accettato prima di inviare."
+  }
+}

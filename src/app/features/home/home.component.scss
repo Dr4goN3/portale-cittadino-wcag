@@ -1,0 +1,116 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+// Page header
+.page-header {
+  margin-block-end: v.$space-7;
+}
+
+.page-header__title {
+  margin-block-end: v.$space-3;
+  color: v.$color-primary-dark;
+}
+
+.page-header__intro {
+  max-width: 60ch;
+  color: v.$color-text-subtle;
+  font-size: v.$font-size-lg;
+  line-height: v.$line-height-loose;
+}
+
+// Services list — responsive grid
+.services-list {
+  display: grid;
+  // minmax(0, 1fr) instead of 1fr: prevents grid track from growing beyond
+  // the viewport when content exceeds available width (WCAG 1.4.10 Reflow)
+  grid-template-columns: minmax(0, 1fr);
+  gap: v.$space-5;
+
+  @include m.respond-to('md') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include m.respond-to('lg') {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+// Service card
+.service-card {
+  @include m.card();
+
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-4;
+
+  // Reduce padding on very narrow viewports, restore at 320px+
+  padding: v.$space-3;
+
+  // Prevent the card (as a grid item) from overflowing its track
+  min-width: 0;
+
+  // Break long words so text never causes horizontal overflow (WCAG 1.4.10)
+  overflow-wrap: break-word;
+
+  @include m.respond-to('sm') {
+    padding: v.$space-5;
+  }
+}
+
+.service-card__header {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: v.$space-3;
+}
+
+.service-card__icon {
+  font-size: v.$font-size-2xl;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.service-card__title {
+  // flex-basis 8rem acts as the wrap trigger:
+  // - at ≲316px content the badge cannot share the row → wraps below (no overlap)
+  // - at ≥320px content badge fits alongside title → stays on one row
+  flex: 1 1 8rem;
+  font-size: v.$font-size-xl;
+  font-weight: v.$font-weight-bold;
+  color: v.$color-primary-dark;
+  min-width: 0;        // allow text to wrap inside flex container
+  word-break: break-word;
+}
+
+// Badge inside the card header: never shrink so it never visually compresses
+// into the title; flex-wrap on the parent will push it below when needed
+.service-card__header .badge {
+  flex-shrink: 0;
+}
+
+.service-card__description {
+  color: v.$color-text-subtle;
+  font-size: v.$font-size-base;
+  line-height: v.$line-height-base;
+  flex: 1; // push CTA to bottom of card
+}
+
+.service-card__cta {
+  margin-block-start: auto;
+  align-self: flex-start;
+}
+
+// The "Appointment required" span mimics .btn but must wrap on narrow viewports
+// because white-space: nowrap (from global .btn) would overflow the card width
+.service-card__unavailable .btn {
+  white-space: normal;
+  text-align: center;
+}
+
+// "Appointment required" pseudo-button: allow text to wrap so it never
+// overflows a narrow card (WCAG 1.4.10 Reflow).
+.service-card__unavailable .btn {
+  white-space: normal;
+  word-break: break-word;
+  text-align: center;
+}

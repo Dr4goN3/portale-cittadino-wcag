@@ -1,0 +1,259 @@
+<header class="contact-header">
+  <h1 class="contact-header__title">{{ 'contact.heading' | translate }}</h1>
+  <p class="contact-header__intro">
+    {{ 'contact.intro' | translate }}
+    <span class="sr-only">{{ 'contact.introRequired' | translate }}</span>
+  </p>
+</header>
+
+@if (submitSuccess) {
+  <div class="contact-success-wrapper">
+    <pcw-status-message
+      type="success"
+      [title]="'contact.success.title' | translate"
+      [message]="'contact.success.message' | translate"
+    />
+    <a routerLink="/" class="btn btn--secondary" style="margin-block-start: 1rem;">
+      {{ 'contact.success.back' | translate }}
+    </a>
+  </div>
+}
+
+@if (!submitSuccess) {
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    novalidate
+    class="contact-form"
+    [attr.aria-label]="'contact.form.ariaLabel' | translate"
+  >
+
+    @if (hasAttemptedSubmit && form.invalid) {
+      <div
+        #errorSummary
+        class="error-summary"
+        role="alert"
+        aria-labelledby="error-summary-title"
+        tabindex="-1"
+      >
+        <h2 class="error-summary__title" id="error-summary-title">
+          {{ 'contact.errors.count' | translate : { count: summaryErrors.length } }}
+        </h2>
+        <ul class="error-summary__list" role="list">
+          @for (err of summaryErrors; track err.field) {
+            <li class="error-summary__item">
+              <a [href]="'#field-' + err.field">{{ err.label }}: {{ err.message }}</a>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+
+
+    <div class="form-group">
+      <label class="form-label" for="field-firstName">
+        {{ 'contact.form.firstName.label' | translate }}
+        <span class="required-indicator" aria-hidden="true">*</span>
+        <span class="sr-only">{{ 'contact.form.firstName.required' | translate }}</span>
+      </label>
+      <input
+        id="field-firstName"
+        type="text"
+        class="form-control"
+        formControlName="firstName"
+        autocomplete="given-name"
+        [class.is-invalid]="showError('firstName')"
+        [attr.aria-invalid]="showError('firstName') ? 'true' : null"
+        [attr.aria-describedby]="showError('firstName') ? 'firstName-error' : null"
+        aria-required="true"
+        spellcheck="false"
+      />
+      @if (showError('firstName')) {
+        <span id="firstName-error" class="form-error" role="alert">
+          {{ getError('firstName', 'contact.form.firstName.label') }}
+        </span>
+      }
+    </div>
+
+
+    <div class="form-group">
+      <label class="form-label" for="field-lastName">
+        {{ 'contact.form.lastName.label' | translate }}
+        <span class="required-indicator" aria-hidden="true">*</span>
+        <span class="sr-only">{{ 'contact.form.lastName.required' | translate }}</span>
+      </label>
+      <input
+        id="field-lastName"
+        type="text"
+        class="form-control"
+        formControlName="lastName"
+        autocomplete="family-name"
+        [class.is-invalid]="showError('lastName')"
+        [attr.aria-invalid]="showError('lastName') ? 'true' : null"
+        [attr.aria-describedby]="showError('lastName') ? 'lastName-error' : null"
+        aria-required="true"
+        spellcheck="false"
+      />
+      @if (showError('lastName')) {
+        <span id="lastName-error" class="form-error" role="alert">
+          {{ getError('lastName', 'contact.form.lastName.label') }}
+        </span>
+      }
+    </div>
+
+
+    <div class="form-group">
+      <label class="form-label" for="field-email">
+        {{ 'contact.form.email.label' | translate }}
+        <span class="required-indicator" aria-hidden="true">*</span>
+        <span class="sr-only">{{ 'contact.form.email.required' | translate }}</span>
+      </label>
+      <p id="email-hint" class="form-hint">
+        {{ 'contact.form.email.hint' | translate }}
+      </p>
+      <input
+        id="field-email"
+        type="email"
+        class="form-control"
+        formControlName="email"
+        autocomplete="email"
+        inputmode="email"
+        [class.is-invalid]="showError('email')"
+        [attr.aria-invalid]="showError('email') ? 'true' : null"
+        [attr.aria-describedby]="showError('email') ? 'email-hint email-error' : 'email-hint'"
+        aria-required="true"
+      />
+      @if (showError('email')) {
+        <span id="email-error" class="form-error" role="alert">
+          {{ getError('email', 'contact.form.email.label') }}
+        </span>
+      }
+    </div>
+
+
+    <div class="form-group">
+      <label class="form-label" for="field-phone">
+        {{ 'contact.form.phone.label' | translate }}
+        <span class="sr-only">{{ 'contact.form.phone.optional' | translate }}</span>
+      </label>
+      <p id="phone-hint" class="form-hint">
+        {{ 'contact.form.phone.hint' | translate }}
+      </p>
+      <input
+        id="field-phone"
+        type="tel"
+        class="form-control"
+        formControlName="phone"
+        autocomplete="tel"
+        inputmode="tel"
+        [class.is-invalid]="showError('phone')"
+        [attr.aria-invalid]="showError('phone') ? 'true' : null"
+        [attr.aria-describedby]="showError('phone') ? 'phone-hint phone-error' : 'phone-hint'"
+      />
+      @if (showError('phone')) {
+        <span id="phone-error" class="form-error" role="alert">
+          {{ getError('phone', 'contact.form.phone.label') }}
+        </span>
+      }
+    </div>
+
+
+    <div class="form-group">
+      <label class="form-label" for="field-requestType">
+        {{ 'contact.form.requestType.label' | translate }}
+        <span class="required-indicator" aria-hidden="true">*</span>
+        <span class="sr-only">{{ 'contact.form.requestType.required' | translate }}</span>
+      </label>
+      <select
+        id="field-requestType"
+        class="form-control"
+        formControlName="requestType"
+        [class.is-invalid]="showError('requestType')"
+        [attr.aria-invalid]="showError('requestType') ? 'true' : null"
+        [attr.aria-describedby]="showError('requestType') ? 'requestType-error' : null"
+        aria-required="true"
+      >
+        <option value="" disabled>{{ 'contact.form.requestType.placeholder' | translate }}</option>
+        @for (type of requestTypes; track type.value) {
+          <option [value]="type.value">{{ ('contact.form.requestType.options.' + type.value) | translate }}</option>
+        }
+      </select>
+      @if (showError('requestType')) {
+        <span id="requestType-error" class="form-error" role="alert">
+          {{ getError('requestType', 'contact.form.requestType.label') }}
+        </span>
+      }
+    </div>
+
+
+    <div class="form-group">
+      <label class="form-label" for="field-message">
+        {{ 'contact.form.message.label' | translate }}
+        <span class="required-indicator" aria-hidden="true">*</span>
+        <span class="sr-only">{{ 'contact.form.message.required' | translate }}</span>
+      </label>
+      <p id="message-hint" class="form-hint">
+        {{ 'contact.form.message.hint' | translate }}
+      </p>
+      <textarea
+        id="field-message"
+        class="form-control contact-form__textarea"
+        formControlName="message"
+        rows="5"
+        [class.is-invalid]="showError('message')"
+        [attr.aria-invalid]="showError('message') ? 'true' : null"
+        [attr.aria-describedby]="showError('message') ? 'message-hint message-error' : 'message-hint'"
+        aria-required="true"
+      ></textarea>
+      @if (showError('message')) {
+        <span id="message-error" class="form-error" role="alert">
+          {{ getError('message', 'contact.form.message.label') }}
+        </span>
+      }
+    </div>
+
+
+    <div class="form-group form-group--checkbox">
+      <input
+        id="field-privacyConsent"
+        type="checkbox"
+        class="form-checkbox"
+        formControlName="privacyConsent"
+        [class.is-invalid]="showError('privacyConsent')"
+        [attr.aria-invalid]="showError('privacyConsent') ? 'true' : null"
+        [attr.aria-describedby]="showError('privacyConsent') ? 'privacyConsent-error' : null"
+        aria-required="true"
+      />
+      <label class="form-label form-label--inline" for="field-privacyConsent">
+        {{ 'contact.form.privacy.label' | translate }}
+        <a href="#" class="contact-form__privacy-link" target="_blank"
+           rel="noopener noreferrer">{{ 'contact.form.privacy.policyLink' | translate }}</a>
+        {{ 'contact.form.privacy.labelSuffix' | translate }}
+        <span class="required-indicator" aria-hidden="true">*</span>
+        <span class="sr-only">{{ 'contact.form.privacy.required' | translate }}</span>
+      </label>
+      @if (showError('privacyConsent')) {
+        <span id="privacyConsent-error" class="form-error form-error--checkbox" role="alert">
+          {{ getError('privacyConsent', 'contact.form.privacy.policyLink') }}
+        </span>
+      }
+    </div>
+
+    <div class="contact-form__actions">
+      <button
+        type="submit"
+        class="btn btn--primary btn--full"
+        [disabled]="submitted"
+        [attr.aria-busy]="submitted ? 'true' : null"
+      >
+        @if (submitted) {
+          <span aria-hidden="true">⏳</span>
+          {{ 'contact.form.submit.submitting' | translate }}
+        } @else {
+          {{ 'contact.form.submit.label' | translate }}
+        }
+      </button>
+    </div>
+
+  </form>
+}

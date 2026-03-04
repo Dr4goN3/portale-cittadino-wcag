@@ -1,0 +1,11 @@
+@use '../../../../styles/variables' as v;
+@use '../../../../styles/mixins' as m;
+
+// Styles defined in global styles.scss (.status-message, --success, --error)
+// Component-scoped overrides if needed
+
+.status-message__body {
+  margin-block-start: v.$space-1;
+  font-size: v.$font-size-sm;
+  line-height: v.$line-height-base;
+}

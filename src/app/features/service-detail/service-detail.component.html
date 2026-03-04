@@ -1,0 +1,77 @@
+@if (service) {
+
+  <pcw-breadcrumb [items]="breadcrumb" />
+
+  <header class="detail-header">
+    <h1 class="detail-header__title">{{ ('services.' + service.id + '.title') | translate }}</h1>
+
+    @if (service.available) {
+      <span class="badge badge--available" [attr.aria-label]="'detail.badge.available' | translate">
+        <span aria-hidden="true">✓</span> {{ 'detail.badge.onlineLabel' | translate }}
+      </span>
+    } @else {
+      <span class="badge badge--unavailable" [attr.aria-label]="'detail.badge.unavailable' | translate">
+        <span aria-hidden="true">✕</span> {{ 'detail.badge.inPersonLabel' | translate }}
+      </span>
+    }
+  </header>
+
+  <div class="detail-body">
+
+    <section class="detail-section" aria-labelledby="section-description">
+      <h2 class="detail-section__title" id="section-description">{{ 'detail.section.description' | translate }}</h2>
+      <p class="detail-section__text">{{ ('services.' + service.id + '.detail.description') | translate }}</p>
+    </section>
+
+    <section class="detail-section" aria-labelledby="section-documents">
+      <h2 class="detail-section__title" id="section-documents">{{ 'detail.section.documents' | translate }}</h2>
+      <ul class="detail-list" role="list">
+        @for (doc of docs; track doc) {
+          <li class="detail-list__item">{{ doc }}</li>
+        }
+      </ul>
+    </section>
+
+    <section class="detail-section" aria-labelledby="section-times">
+      <h2 class="detail-section__title" id="section-times">{{ 'detail.section.times' | translate }}</h2>
+      <dl class="detail-dl">
+        <div class="detail-dl__row">
+          <dt class="detail-dl__term">{{ 'detail.dl.processingTime' | translate }}</dt>
+          <dd class="detail-dl__desc">{{ ('services.' + service.id + '.detail.processingTime') | translate }}</dd>
+        </div>
+        <div class="detail-dl__row">
+          <dt class="detail-dl__term">{{ 'detail.dl.cost' | translate }}</dt>
+          <dd class="detail-dl__desc">{{ ('services.' + service.id + '.detail.cost') | translate }}</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="detail-section" aria-labelledby="section-how">
+      <h2 class="detail-section__title" id="section-how">{{ 'detail.section.howToApply' | translate }}</h2>
+      <p class="detail-section__text">{{ ('services.' + service.id + '.detail.howToApply') | translate }}</p>
+    </section>
+
+    @if (service.available) {
+      <div class="detail-cta">
+        <a
+          routerLink="/contact"
+          class="btn btn--primary"
+          [attr.aria-label]="'detail.cta.ariaLabel' | translate : { serviceName: (('services.' + service.id + '.title') | translate) }"
+        >
+          {{ 'detail.cta.label' | translate }}
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    }
+
+  </div>
+
+} @else {
+
+  <div class="detail-not-found" role="alert">
+    <h1>{{ 'detail.notFound.title' | translate }}</h1>
+    <p>{{ 'detail.notFound.message' | translate }}</p>
+    <a routerLink="/" class="btn btn--primary">{{ 'detail.notFound.back' | translate }}</a>
+  </div>
+
+}

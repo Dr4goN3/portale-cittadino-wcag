@@ -1,0 +1,50 @@
+<header class="page-header">
+  <h1 class="page-header__title">{{ 'home.heading' | translate }}</h1>
+  <p class="page-header__intro" [innerHTML]="'home.intro' | translate"></p>
+</header>
+
+<ul class="services-list" role="list" [attr.aria-label]="'home.list.label' | translate">
+  @for (service of services; track service.id) {
+    <li class="service-card">
+
+      <div class="service-card__header">
+
+        <span class="service-card__icon" aria-hidden="true" role="img">
+          {{ service.icon }}
+        </span>
+
+        <h2 class="service-card__title">{{ ('services.' + service.id + '.title') | translate }}</h2>
+
+        @if (service.available) {
+          <span class="badge badge--available" [attr.aria-label]="'home.badge.available' | translate">
+            <span aria-hidden="true">✓</span> {{ 'home.badge.onlineLabel' | translate }}
+          </span>
+        } @else {
+          <span class="badge badge--unavailable" [attr.aria-label]="'home.badge.unavailable' | translate">
+            <span aria-hidden="true">✕</span> {{ 'home.badge.inPersonLabel' | translate }}
+          </span>
+        }
+      </div>
+
+      <p class="service-card__description">{{ ('services.' + service.id + '.description') | translate }}</p>
+
+      @if (service.available) {
+        <a
+          [routerLink]="['/services', service.id]"
+          class="btn btn--primary service-card__cta"
+          [attr.aria-label]="('home.card.viewDetailsAriaLabel' | translate : { serviceName: (('services.' + service.id + '.title') | translate) })"
+        >
+          {{ 'home.card.viewDetails' | translate }}
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      } @else {
+        <span class="service-card__cta service-card__unavailable">
+          <span class="btn btn--secondary" aria-disabled="true" role="button" tabindex="-1">
+            {{ 'home.card.appointmentRequired' | translate }}
+          </span>
+        </span>
+      }
+
+    </li>
+  }
+</ul>

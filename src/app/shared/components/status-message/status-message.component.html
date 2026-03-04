@@ -1,0 +1,28 @@
+<!--
+  WCAG 4.1.3 Status Messages
+  role="status" + aria-live="polite" announces this message to screen readers
+  when it appears in the DOM, without requiring a focus change.
+
+  WCAG 1.4.1 Use of Colour
+  Meaning conveyed by the icon text (aria-label) + visible title, not colour alone.
+-->
+<div
+  class="status-message"
+  [class.status-message--success]="type() === 'success'"
+  [class.status-message--error]="type() === 'error'"
+  role="status"
+  aria-live="polite"
+  aria-atomic="true"
+>
+  <!-- Decorative icon with accessible label -->
+  <span class="status-message__icon" [attr.aria-label]="iconLabel" role="img">
+    {{ icon }}
+  </span>
+
+  <div class="status-message__text">
+    <p class="status-message__title">{{ title() }}</p>
+    @if (message()) {
+      <p class="status-message__body">{{ message() }}</p>
+    }
+  </div>
+</div>

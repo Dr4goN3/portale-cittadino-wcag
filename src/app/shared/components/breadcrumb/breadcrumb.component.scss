@@ -1,0 +1,45 @@
+@use '../../../../styles/variables' as v;
+@use '../../../../styles/mixins' as m;
+
+.breadcrumb {
+  margin-block-end: v.$space-6;
+}
+
+.breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: v.$space-2;
+}
+
+.breadcrumb__item {
+  display: flex;
+  align-items: center;
+  gap: v.$space-2;
+  font-size: v.$font-size-sm;
+  color: v.$color-text-subtle;
+}
+
+.breadcrumb__link {
+  color: v.$color-primary;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: v.$color-primary-dark;
+  }
+
+  &:focus-visible {
+    @include m.focus-ring();
+  }
+}
+
+.breadcrumb__separator {
+  color: v.$color-text-subtle;
+  user-select: none;
+}
+
+.breadcrumb__current {
+  color: v.$color-text-primary;
+  font-weight: v.$font-weight-medium;
+}

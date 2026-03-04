@@ -1,0 +1,29 @@
+<!--
+  WCAG 2.4.8  — Nav landmark with aria-label="Breadcrumb" identifies this region
+  WCAG 1.3.1  — Ordered list conveys sequential relationship
+  WCAG 1.4.1  — aria-current="page" marks current item (not colour alone)
+  WCAG 2.4.4  — items with a path are links; last item is plain text
+-->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol class="breadcrumb__list" role="list">
+    @for (item of items(); track item.label; let last = $last) {
+      <li class="breadcrumb__item">
+
+        @if (!last && item.path) {
+          <!-- Intermediate step: navigable link -->
+          <a [routerLink]="item.path" class="breadcrumb__link">
+            {{ item.label }}
+          </a>
+          <!-- Separator is decorative; aria-hidden hides it from screen readers -->
+          <span class="breadcrumb__separator" aria-hidden="true">/</span>
+        } @else {
+          <!-- Current page: not a link; aria-current="page" for screen readers -->
+          <span class="breadcrumb__current" aria-current="page">
+            {{ item.label }}
+          </span>
+        }
+
+      </li>
+    }
+  </ol>
+</nav>

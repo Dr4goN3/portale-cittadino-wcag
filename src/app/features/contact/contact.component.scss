@@ -1,0 +1,86 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+// Page header
+.contact-header {
+  margin-block-end: v.$space-7;
+}
+
+.contact-header__title {
+  color: v.$color-primary-dark;
+  margin-block-end: v.$space-3;
+}
+
+.contact-header__intro {
+  max-width: 60ch;
+  color: v.$color-text-subtle;
+  font-size: v.$font-size-lg;
+  line-height: v.$line-height-loose;
+}
+
+// Form layout
+.contact-form {
+  max-width: 640px;
+}
+
+.contact-form__textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+// Checkbox group override
+.form-group--checkbox {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: v.$space-3;
+  align-items: start;
+}
+
+.form-checkbox {
+  margin-block-start: 3px; // optically align with first line of label
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: v.$color-primary; // tints native checkbox in modern browsers
+
+  &:focus-visible {
+    @include m.focus-ring();
+  }
+}
+
+.form-label--inline {
+  font-size: v.$font-size-sm;
+  font-weight: v.$font-weight-regular;
+  cursor: pointer;
+}
+
+.form-error--checkbox {
+  grid-column: 2;
+}
+
+// Privacy Policy link
+.contact-form__privacy-link {
+  color: v.$color-primary;
+}
+
+// Submit button area
+.contact-form__actions {
+  margin-block-start: v.$space-6;
+}
+
+// Success wrapper — receives programmatic focus after successful submit
+.contact-success-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 640px;
+
+  &:focus-visible {
+    @include m.focus-ring();
+  }
+
+  // Remove outline when focused via JavaScript (not keyboard)
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}

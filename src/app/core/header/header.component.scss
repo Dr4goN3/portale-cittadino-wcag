@@ -1,0 +1,93 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.site-header {
+  background: v.$color-primary;
+  color: v.$color-text-inverse;
+  // Fixed height kept consistent so :focus ring is never obscured (WCAG 2.4.11)
+  min-height: v.$header-height;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.15);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: v.$header-height;
+  gap: v.$space-4;
+}
+
+// Brand / logo link
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+  color: v.$color-text-inverse;
+  text-decoration: none;
+  font-weight: v.$font-weight-bold;
+  font-size: v.$font-size-lg;
+
+  &:hover {
+    color: v.$color-accent;
+  }
+
+  // WCAG 2.4.7 — clear focus ring on brand link
+  &:focus-visible {
+    @include m.focus-ring();
+    outline-color: v.$color-accent;
+    border-radius: v.$radius-sm;
+  }
+}
+
+.site-header__icon {
+  flex-shrink: 0;
+  color: v.$color-accent;
+}
+
+.site-header__name {
+  // Hide on very small viewports, keep accessible via aria-label on <a>
+  @media (max-width: 380px) {
+    @include m.visually-hidden();
+  }
+}
+
+// Navigation list
+.site-header__nav-list {
+  display: flex;
+  align-items: center;
+  gap: v.$space-4;
+}
+
+.site-header__nav-link {
+  display: inline-block;
+  padding: v.$space-2 v.$space-3;
+  color: v.$color-text-inverse;
+  text-decoration: none;
+  font-size: v.$font-size-base;
+  font-weight: v.$font-weight-medium;
+  border-radius: v.$radius-md;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+
+  &:hover {
+    // WCAG 1.4.11 — increased opacity for a more distinguishable hover indicator;
+    // yellow border-bottom (5.2:1 on dark bg) is the primary visual cue.
+    background: rgb(255 255 255 / 0.18);
+    border-bottom-color: v.$color-accent;
+  }
+
+  // WCAG 1.4.1 — active state indicated by underline AND colour
+  &.is-active {
+    border-bottom-color: v.$color-accent;
+    color: v.$color-accent;
+  }
+
+  // WCAG 2.4.7 — focus ring visible against dark header background
+  &:focus-visible {
+    @include m.focus-ring();
+    outline-color: v.$color-accent;
+  }
+}
