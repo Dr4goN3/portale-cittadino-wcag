@@ -122,3 +122,52 @@ src/
 ├── styles/                 # _variables.scss, _mixins.scss, _typography.scss
 └── public/assets/i18n/     # en.json, it.json
 ```
+
+## Strumenti di verifica accessibilità
+
+### Lighthouse (audit automatico)
+
+Lighthouse è integrato in Chrome DevTools — non richiede installazione.
+
+1. Apri il sito in Chrome
+2. Apri DevTools (`F12` oppure `Cmd+Option+I` su Mac)
+3. Vai sulla scheda **Lighthouse**
+4. Seleziona la categoria **Accessibility**, scegli **Mobile** o **Desktop** e clicca **Analyze page load**
+
+Il report mostrerà lo score e i criteri falliti.
+
+---
+
+### WAVE (estensione Chrome)
+
+WAVE è un'estensione gratuita di WebAIM che evidenzia visivamente errori e avvertimenti sull'accessibilità direttamente nella pagina.
+
+1. Vai su [Chrome Web Store — WAVE](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh)
+2. Clicca **Aggiungi a Chrome** → **Aggiungi estensione**
+3. Naviga sul sito da verificare e clicca l'icona WAVE nella barra degli strumenti
+
+Il pannello laterale mostrerà errori (rosso), avvertimenti (giallo), elementi strutturali (blu) e attributi ARIA (viola).
+
+---
+
+### NVDA (screen reader — solo Windows)
+
+NVDA è uno screen reader gratuito e open source, il più diffuso nei test di accessibilità su Windows.
+
+1. Scarica l'installer da [nvaccess.org](https://www.nvaccess.org/download/)
+2. Esegui l'installer e segui la procedura guidata (la donazione è opzionale)
+3. NVDA si avvia nel system tray — usa `NVDA+Q` per uscire
+
+**Comandi base per i test:**
+
+| Azione | Tasto |
+|---|---|
+| Avvia/riavvia | `Ctrl+Alt+N` |
+| Modalità navigazione | `NVDA+Spazio` |
+| Leggi tutto | `NVDA+Freccia giù` |
+| Vai all'intestazione successiva | `H` |
+| Vai al landmark successivo | `D` |
+| Vai al form successivo | `F` |
+| Attiva un link o bottone | `Invio` |
+
+> **Nota:** su macOS il corrispettivo è **VoiceOver**, integrato nel sistema — attivabile con `Cmd+F5`.
