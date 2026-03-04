@@ -12,7 +12,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "pcw",
       "architect": {
         "build": {
           "builder": "@angular/build:application",

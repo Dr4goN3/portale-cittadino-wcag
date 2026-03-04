@@ -1,0 +1,96 @@
+@use 'sass:map';
+@use 'variables' as v;
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: v.$font-family-base;
+  font-size: v.$font-size-base;
+  font-weight: v.$font-weight-regular;
+  line-height: v.$line-height-base;
+  color: v.$color-text-primary;
+  background-color: v.$color-bg;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Heading scale
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: v.$font-weight-bold;
+  line-height: v.$line-height-tight;
+  color: v.$color-text-primary;
+  margin-block: 0;
+}
+
+h1 {
+  font-size: v.$font-size-3xl;
+
+  @media (min-width: #{map.get(v.$breakpoints, 'md')}) {
+    font-size: v.$font-size-4xl;
+  }
+}
+
+h2 {
+  font-size: v.$font-size-2xl;
+}
+
+h3 {
+  font-size: v.$font-size-xl;
+}
+
+h4 {
+  font-size: v.$font-size-lg;
+}
+
+h5,
+h6 {
+  font-size: v.$font-size-base;
+}
+
+p {
+  margin-block: 0;
+  line-height: v.$line-height-base;
+}
+
+// Links — WCAG 1.4.1: not identified by colour alone (underline kept)
+a {
+  color: v.$color-primary;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: v.$color-primary-dark;
+  }
+
+  &:focus-visible {
+    outline: v.$focus-ring-width solid v.$focus-ring-color;
+    outline-offset: v.$focus-ring-offset;
+    border-radius: v.$radius-sm;
+    text-decoration: none;
+  }
+}
+
+// Lists — reset for nav/card lists, keep readable margin for prose lists
+ul,
+ol {
+  margin-block: 0;
+  padding-inline-start: 0;
+  list-style: none;
+}
+
+// Strong / bold
+strong {
+  font-weight: v.$font-weight-bold;
+}
+
+// Small text
+small {
+  font-size: v.$font-size-sm;
+}

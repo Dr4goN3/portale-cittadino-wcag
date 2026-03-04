@@ -1,0 +1,78 @@
+// Colour palette
+$color-primary:         #1a4f8a;
+$color-primary-dark:    #0d2b4e;
+$color-primary-light:   #e8f0f9;
+$color-accent:          #ffc200;
+$color-accent-dark:     #a06800;
+
+$color-text-primary:    #1a1a1a;
+$color-text-subtle:     #5a5a5a;
+$color-text-inverse:    #ffffff;
+
+$color-bg:              #ffffff;
+$color-bg-alt:          #f5f7fa;
+$color-bg-card:         #ffffff;
+
+$color-border:          #c8d0db;
+$color-border-focus:    $color-primary;
+
+$color-error:           #c0392b;
+$color-error-bg:        #fdf3f2;
+$color-error-border:    #c0392b;
+$color-success:         #1e6b3c;
+$color-success-bg:      #f0faf4;
+$color-success-border:  #1e6b3c;
+
+// Breakpoints
+$breakpoints: (
+  'sm': 320px,
+  'md': 768px,
+  'lg': 1200px,
+);
+
+// Spacing (base 4px)
+$space-1:  4px;
+$space-2:  8px;
+$space-3:  12px;
+$space-4:  16px;
+$space-5:  24px;
+$space-6:  32px;
+$space-7:  48px;
+$space-8:  64px;
+$space-9:  96px;
+
+// Typography
+$font-family-base: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+
+$font-size-xs:   0.75rem;   // 12px
+$font-size-sm:   0.875rem;  // 14px
+$font-size-base: 1rem;      // 16px
+$font-size-lg:   1.125rem;  // 18px
+$font-size-xl:   1.25rem;   // 20px
+$font-size-2xl:  1.5rem;    // 24px
+$font-size-3xl:  1.875rem;  // 30px
+$font-size-4xl:  2.25rem;   // 36px
+
+$line-height-tight:  1.25;
+$line-height-base:   1.6;
+$line-height-loose:  1.8;
+
+$font-weight-regular: 400;
+$font-weight-medium:  500;
+$font-weight-bold:    700;
+
+// Border radius
+$radius-sm:     4px;
+$radius-md:     8px;
+$radius-lg:     12px;
+$radius-full:   9999px;
+
+// Focus ring
+$focus-ring-width:  3px;
+$focus-ring-offset: 2px;
+$focus-ring-color:  $color-primary;
+
+// Layout
+$container-max-width: 1120px;
+$header-height:       64px;
+$nav-gap:             $space-5;
